@@ -1,0 +1,486 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 bg-light-alt">
+    <div class="row">
+        <div class="col-lg-8">
+            <button type="button" class="btn btn-light btn-sm border-primary">Scan File</button>
+            <button type="button" class="btn btn-light btn-sm border-primary">Policy Schedule</button>
+            <button type="button" class="btn btn-light btn-sm border-primary">Policy Notes</button>
+        </div>
+        <div class="col-lg-4 pl-lg-5 pr-lg-5">
+            <button type="button" class="btn btn-light btn-sm pull-right w-25 border-primary">Save</button>
+            <button type="button" class="btn btn-light btn-sm pull-left w-25 border-primary">Exit</button>
+        </div>
+        <div class="col-12 mt-2 ">
+            <div class="btn-group border-top border-warning" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light btn-sm">Case</button>
+                <button type="button" class="btn btn-light btn-sm">Document</button>
+                <button type="button" class="btn btn-light btn-sm">History</button>
+                <button type="button" class="btn btn-light btn-sm">Utilization</button>
+                <button type="button" class="btn btn-light btn-sm">Process</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--**********************************
+        Form start
+    ***********************************-->
+<div class="col-lg-12">
+    <div class="card">
+        <form>
+            <!--Case Detail-->
+            <fieldset class="col-12" style="border: 1px solid #ddd !important;border-radius: 8px;padding: 0 1.4em 1.4em 1.4em !important;margin: 0 0 1.5em 0 !important">
+                <legend class="text-primary" style="font-size: 1.2em !important; font-weight: bold !important; text-align: left !important; width: auto; padding: 0 10px; border-bottom: none">Case Details</legend>
+                <!--Case No, Notify date-->
+                <div class="form-group row">
+                    <label for="cd-txt-case-no" class="col-sm-2 col-form-label col-form-label-sm">Case No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-case-no" name="cd-txt-case-no">
+                    </div>
+                    <label for="cd-txt-notify-case" class="col-sm-2 col-form-label col-form-label-sm">Notify Date</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-notify-case" name="cd-txt-notify-case">
+                    </div>
+                </div>
+
+                <!--Batch No, Key-in by-->
+                <div class="form-group row">
+                    <label for="cd-txt-batch-no" class="col-sm-2 col-form-label col-form-label-sm">Batch No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-batch-no" name="cd-txt-batch-no">
+                    </div>
+                    <label for="cd-txt-key-in" class="col-sm-2 col-form-label col-form-label-sm">Key-in By</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-key-in" name="cd-txt-key-in">
+                    </div>
+                </div>
+
+                <!--Case Soucre, File receipt method-->
+                <div class="form-group row">
+                    <label for="cd-slt-case-source" class="col-sm-2 col-form-label col-form-label-sm">Case Source</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="cd-slt-case-source" name="cd-slt-case-source">
+                            <option>Credit Case</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="cd-slt-receipt" class="col-sm-2 col-form-label col-form-label-sm">File Receipt Method</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="cd-slt-receipt" name="cd-slt-receipt">
+                            <option>Hospital Portal </option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Case Soucre, File receipt method-->
+                <div class="form-group row">
+                    <label for="cd-slt-branch" class="col-sm-2 col-form-label col-form-label-sm">Branch Office</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="cd-slt-branch" name="cd-slt-branch">
+                            <option>Insmart Ha Noi HQ</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="cd-slt-case-status" class="col-sm-2 col-form-label col-form-label-sm">Case Status</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="cd-slt-case-status" name="cd-slt-case-status">
+                            <option>Notified</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Status reason-->
+                <div class="form-group row">
+                    <label for="cd-slt-status-reason" class="col-sm-2 col-form-label col-form-label-sm">Status Reason</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="cd-slt-status-reason" name="cd-slt-status-reason">
+                            <option>Trường hợp tạo và chờ giải quyết bồi thường / Case Created And Pending Claim Creation By Claim Owner</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--External case ref, Ref case no-->
+                <div class="form-group row">
+                    <label for="cd-txt-ref" class="col-sm-2 col-form-label col-form-label-sm">External Case Ref</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-ref" name="cd-txt-ref">
+                    </div>
+                    <label for="cd-txt-ref-no" class="col-sm-2 col-form-label col-form-label-sm">Ref Case No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" id="cd-txt-ref-no" name="cd-txt-ref-no">
+                    </div>
+                </div>
+
+                <!--Assistance request-->
+                <div class="form-group row">
+                    <label for="cd-txt-assistance" class="col-sm-2 col-form-label col-form-label-sm">Assistance Requested</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="cd-txt-assistance" name="cd-txt-assistance" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!--Initial Assessment-->
+                <div class="form-group row">
+                    <label for="cd-txt-assessment" class="col-sm-2 col-form-label col-form-label-sm">Initial Assessment</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="cd-txt-assistance" name="cd-txt-assessment" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!--File received, Claim owner-->
+                <div class="form-group row">
+                    <label for="cd-txt-path" class="col-sm-2 col-form-label col-form-label-sm">File Received On</label>
+                    <div class="col-sm-4 ">
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" class="form-control form-control-sm" id="cd-txt-path" name="cd-txt-path">
+                            </div>
+                            <div class="2">
+                                <button type="button" class="btn btn-light btn-sm">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="cd-slt-claim" class="col-sm-2 col-form-label col-form-label-sm">Claim owner</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="cd-slt-claim" name="cd-slt-claim">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!--Patient-->
+            <fieldset class="col-12" style="border: 1px solid #ddd !important;border-radius: 8px;padding: 0 1.4em 1.4em 1.4em !important;margin: 0 0 1.5em 0 !important">
+                <legend class="text-primary" style="font-size: 1.2em !important; font-weight: bold !important; text-align: left !important; width: auto; padding: 0 10px; border-bottom: none">Patient</legend>
+                <!--Card No-->
+                <div class="form-group row">
+                    <label for="pt-txt-card-no" class="col-sm-1 col-form-label col-form-label-sm">Card No</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-card-no" name="pt-txt-card-no">
+                    </div>
+                    <label for="pt-txt-name" class="col-sm-1 col-form-label col-form-label-sm">Name</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-name" name="pt-txt-name">
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <label for="pt-slt-grace-period" class="col-sm-6 col-form-label col-form-label-sm">Grace Period Status</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="pt-slt-grace-period" name="pt-slt-grace-period">
+                                    <option>YES</option>
+                                    <option>NO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <label for="pt-txt-premium" class="col-sm-1 col-form-label col-form-label-sm">Ost Premium</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-premium" name="pt-txt-premium">
+                    </div>
+                </div>
+
+                <!--ID Number-->
+                <div class="form-group row">
+                    <label for="pt-txt-id" class="col-sm-1 col-form-label col-form-label-sm">ID Number</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-id" name="pt-txt-id">
+                    </div>
+                    <label for="pt-txt-new-id" class="col-sm-1 col-form-label col-form-label-sm">New Id number</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-new-id" name="pt-txt-new-id">
+                    </div>
+                    <label for="pt-lapsed-date" class="col-sm-1 col-form-label col-form-label-sm">Lapsed Date</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control form-control-sm" name="pt-lapsed-date" id="pt-lapsed-date" />
+                    </div>
+                    <label for="pt-txt-premium" class="col-sm-1 col-form-label col-form-label-sm">Ost Premium</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pt-txt-premium" name="pt-txt-premium">
+                    </div>
+                </div>
+
+                <!--DOB-->
+                <div class="form-group row">
+                    <label for="pt-date-dob" class="col-sm-1 col-form-label col-form-label-sm">DOB</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control form-control-sm" id="pt-date-dob" name="pt-date-dob">
+                    </div>
+                    <label for="pt-date-issue" class="col-sm-1 col-form-label col-form-label-sm">New Id number</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control form-control-sm" id="pt-date-dob" name="pt-date-dob">
+                    </div>
+                    <label for="pt-date-delete" class="col-sm-1 col-form-label col-form-label-sm">New Id number</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control form-control-sm" id="pt-date-delete" name="pt-date-delete">
+                    </div>
+                </div>
+
+                <!--Table Benefit-->
+                <div class="row">
+                    <table class="table table-bordered col-sm-12 col-lg-5 col-md-125 ml-3">
+                        <tbody>
+                            <tr>
+                                <td><b>Benefit</b></td>
+                                <td>HSSC</td>
+                                <td>OPDB</td>
+                                <td>DENB</td>
+                                <td>MATC</td>
+                            </tr>
+                            <tr>
+                                <td><b>Core-Class</b></td>
+                                <td>BASIC</td>
+                                <td>BASIC</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered col-sm-12 col-lg-5 col-md-12 offset-1 mr-3">
+                        <tbody>
+                            <tr>
+                                <td><b>Benefit</b></td>
+                                <td>HSSC</td>
+                                <td>OPDB</td>
+                                <td>DENB</td>
+                                <td>MATC</td>
+                            </tr>
+                            <tr>
+                                <td><b>XML-Class</b></td>
+                                <td>GOLD</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label for="pt-txt-remark">Remark</label>
+                    <textarea class="form-control" id="pt-txt-remark" name="pt-txt-remark" rows="3"></textarea>
+                </div>
+                <!--Hyper link  Patient details-->
+                <div class="form-group row">
+                    <a href="#" class="text-dark ml-3" style="text-decoration:underline"><b>Patient Details</b></a>
+                </div>
+            </fieldset>
+
+            <fieldset class="col-12" style="border: 1px solid #ddd !important;border-radius: 8px;padding: 0 1.4em 1.4em 1.4em !important;margin: 0 0 1.5em 0 !important">
+                <legend class="text-primary" style="font-size: 1.2em !important; font-weight: bold !important; text-align: left !important; width: auto; padding: 0 10px; border-bottom: none">Claim</legend>
+            </fieldset>
+
+            <!--Orrurence detail-->
+            <fieldset class="col-12" style="border: 1px solid #ddd !important;border-radius: 8px;padding: 0 1.4em 1.4em 1.4em !important;margin: 0 0 1.5em 0 !important">
+                <legend class="text-primary" style="font-size: 1.2em !important; font-weight: bold !important; text-align: left !important; width: auto; padding: 0 10px; border-bottom: none">Orrurence Detail</legend>
+
+                <!--Event date, Disc hargedate-->
+                <div class="form-group row">
+                    <label for="od-event-date" class="col-sm-2 col-form-label col-form-label-sm">Event Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control form-control-sm" name="od-event-date" id="od-event-date" />
+                    </div>
+                    <label for="od-discharge-date" class="col-sm-2 col-form-label col-form-label-sm">Discharge Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control form-control-sm" name="od-discharge-date" id="od-discharge-date" />
+                    </div>
+                </div>
+
+                <!--Case Type-->
+                <div class="form-group row">
+                    <label for="od-case-type" class="col-sm-2 col-form-label col-form-label-sm">Event Type</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-case-type" name="od-case-type">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Event-->
+                <div class="form-group row">
+                    <label for="od-event" class="col-sm-2 col-form-label col-form-label-sm">Event</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-event" name="od-event">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="od-accident-date" class="col-sm-2 col-form-label col-form-label-sm">Accident Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control form-control-sm" name="od-accident-date" id="od-accident-date" />
+                    </div>
+                </div>
+
+                <!--Event sub Type-->
+                <div class="form-group row">
+                    <label for="od-event-sub-type" class="col-sm-2 col-form-label col-form-label-sm">Event Sub Type</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-event-sub-type" name="od-event-sub-type">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Enquiry-->
+                <div class="form-group row">
+                    <label for="pt-txt-remark" class="col-sm-2 col-form-label col-form-label-sm">Enquiry</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="pt-txt-remark" name="pt-txt-remark" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!--Media provider-->
+                <div class="form-group row">
+                    <label for="od-media-provider" class="col-sm-2 col-form-label col-form-label-sm">Media Provider</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-media-provider" name="od-media-provider">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-light btn-sm w-100" id="od-upload" name="od-upload">...</button>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="od-path" id="od-path" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Provider network-->
+                <div class="form-group row">
+                    <label for="od-slt-provider-network" class="col-sm-2 col-form-label col-form-label-sm">Provider Network</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-slt-provider-network" name="od-slt-provider-network">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Claim method-->
+                <div class="form-group row">
+                    <label for="od-slt-claim" class="col-sm-2 col-form-label col-form-label-sm">Claim Method</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="od-slt-claim" name="od-slt-claim">
+                            <option>Normal Claim</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="od-txt-sh-cardno" class="col-sm-2 col-form-label col-form-label-sm">State Health Card No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" name="od-txt-sh-cardno" id="od-txt-sh-cardno" />
+                    </div>
+                </div>
+
+                <!--Primary Diagnosis-->
+                <div class="form-group row">
+                    <label for="od-slt-primary-diagnisis" class="col-sm-2 col-form-label col-form-label-sm">Primary Diagnosis</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="od-slt-primary-diagnisis" name="cod-slt-primary-diagnisis">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Ext Claim Reason Code-->
+                <div class="form-group row">
+                    <label for="od-slt-claim-reason" class="col-sm-2 col-form-label col-form-label-sm">Ext Claim Reason Code</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="od-slt-claim-reason" name="od-slt-claim-reason">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Table Diagnosis List-->
+                <div class="row pr-5">
+                    <p class="ml-3"><b>Diagnosis List</b></p>
+                    <table class="table table-bordered col-sm-12 col-lg-12 col-md-12 ml-3 mr-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Diagnosis</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Cause</th>
+                                <th scope="col">Create by</th>
+                                <th scope="col">Create on</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--Exclusion-->
+                <div class="form-group row">
+                    <label for="od-txt-exclusion" class="col-sm-2 col-form-label col-form-label-sm">Exclusion</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="od-txt-exclusion" name="od-txt-exclusion" rows="2"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="col-lg-12 bg-light-alt">
+    <div class="row">
+        <div class="col-lg-8">
+            <button type="button" class="btn btn-light btn-sm border-primary">Scan File</button>
+            <button type="button" class="btn btn-light btn-sm border-primary">Policy Schedule</button>
+            <button type="button" class="btn btn-light btn-sm border-primary">Policy Notes</button>
+        </div>
+        <div class="col-lg-4 pl-lg-5 pr-lg-5">
+            <button type="button" class="btn btn-light btn-sm pull-right w-25 border-primary">Save</button>
+            <button type="button" class="btn btn-light btn-sm pull-left w-25 border-primary">Exit</button>
+        </div>
+    </div>
+</div>

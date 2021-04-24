@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "PatientDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <form>
+            <div class="col-12 mt-2">
+                <!--Patient-->
+                <div class="form-group row">
+                    <div class="col-12">
+                        <a href="#" class="text-dark ml-3" style="text-decoration:underline"><b>Patient Details</b></a>
+                        <h3 class="ml-3 mt-2">Patient</h3>
+                    </div>
+                </div>
+
+                <!--Version, plan code-->
+                <div class="form-group row">
+                    <label for="pd-slt-version" class="col-sm-2 col-form-label col-form-label-sm">Version</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-version" name="pd-slt-version">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="pd-plan-code" class="col-sm-2 col-form-label col-form-label-sm">Plan Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-plan-code" id="pd-plan-code" />
+                    </div>
+                </div>
+
+                <!--Marital Status, Gender-->
+                <div class="form-group row">
+                    <label for="pd-slt-martial-status" class="col-sm-2 col-form-label col-form-label-sm">Marital Status</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-martial-status" name="pd-slt-martial-status">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="pd-slt-gender" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-gender" name="pd-slt-gender">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Effective Date, Cesse Date-->
+                <div class="form-group row">
+                    <label for="pd-effective-date" class="col-sm-2 col-form-label col-form-label-sm">Effective Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-effective-date" id="pd-effective-date" />
+                    </div>
+                    <label for="pd-cease-date" class="col-sm-2 col-form-label col-form-label-sm">Cease Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-cease-date" id="pd-cease-date" />
+                    </div>
+                </div>
+
+                <!--External Client Code-->
+                <div class="form-group row">
+                    <label for="pd-txt-client-code" class="col-sm-2 col-form-label col-form-label-sm">External Client Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-txt-client-code" id="pd-txt-client-code" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-2">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <a href="#" class="text-dark ml-3" style="text-decoration:underline"><b>Patient Details</b></a>
+                        <h3 class="ml-3 mt-2">Patient</h3>
+                    </div>
+                </div>
+
+                <!--Version, plan code-->
+                <div class="form-group row">
+                    <label for="pd-slt-version" class="col-sm-2 col-form-label col-form-label-sm">Version</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-version" name="pd-slt-version">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="pd-plan-code" class="col-sm-2 col-form-label col-form-label-sm">Plan Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-plan-code" id="pd-plan-code" />
+                    </div>
+                </div>
+
+                <!--Marital Status, Gender-->
+                <div class="form-group row">
+                    <label for="pd-slt-martial-status" class="col-sm-2 col-form-label col-form-label-sm">Marital Status</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-martial-status" name="pd-slt-martial-status">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="pd-slt-gender" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="pd-slt-gender" name="pd-slt-gender">
+                            <option></option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Effective Date, Cesse Date-->
+                <div class="form-group row">
+                    <label for="pd-effective-date" class="col-sm-2 col-form-label col-form-label-sm">Effective Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-effective-date" id="pd-effective-date" />
+                    </div>
+                    <label for="pd-cease-date" class="col-sm-2 col-form-label col-form-label-sm">Cease Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-cease-date" id="pd-cease-date" />
+                    </div>
+                </div>
+
+                <!--External Client Code-->
+                <div class="form-group row">
+                    <label for="pd-txt-client-code" class="col-sm-2 col-form-label col-form-label-sm">External Client Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-txt-client-code" id="pd-txt-client-code" />
+                    </div>
+                </div>
+
+                <!--Policy-->
+                <div class="form-group row">
+                    <div class="col-12">
+                        <h3 class="ml-3 mt-2">Policy</h3>
+                    </div>
+                </div>
+
+                <!--Contact No, Policy No-->
+                <div class="form-group row">
+                    <label for="pd-ct-no" class="col-sm-2 col-form-label col-form-label-sm">Contact No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-ct-no" id="pd-ct-no" />
+                    </div>
+                    <label for="pd-pc-no" class="col-sm-2 col-form-label col-form-label-sm">Policy No</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-pc-no" id="pd-pc-no" />
+                    </div>
+                </div>
+
+                <!--Product, Broker/Agent-->
+                <div class="form-group row">
+                    <label for="pd-product" class="col-sm-2 col-form-label col-form-label-sm">Product</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-product" id="pd-product" />
+                    </div>
+                    <label for="pd-br-ag" class="col-sm-2 col-form-label col-form-label-sm">Broker/Agent</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-br-ag" id="pd-br-ag" />
+                    </div>
+                </div>
+
+                <!--Product, Broker/Agent-->
+                <div class="form-group row">
+                    <div class="col-6"></div>
+                    <label for="pd-br-agMobi" class="col-sm-2 col-form-label col-form-label-sm">Broker/Agent Mobile</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-br-agMobi" id="pd-br-agMobi" />
+                    </div>
+                </div>
+
+                <!--Policy-->
+                <div class="form-group row">
+                    <div class="col-12">
+                        <h3 class="ml-3 mt-2">Policy Holder</h3>
+                    </div>
+                </div>
+
+                <!--Policy holder, Id Number-->
+                <div class="form-group row">
+                    <label for="pd-pc-holder" class="col-sm-2 col-form-label col-form-label-sm">Policy holder</label>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="pd-idNum" id="pd-idNum" />
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="pd-pc-holder" id="pd-pc-holder" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <label for="pd-idNum" class="col-sm-2 col-form-label col-form-label-sm">Id Number</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pd-idNum" id="pd-idNum" />
+                    </div>
+                </div>
+
+                <!--DOB, Issue Date-->
+                <div class="form-group row">
+                    <label for="pd-dob" class="col-sm-2 col-form-label col-form-label-sm">DOB</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-dob" id="pd-dob" />
+                    </div>
+                    <label for="pd-issue-date" class="col-sm-2 col-form-label col-form-label-sm">Issue Date</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-issue-date" id="pd-issue-date" />
+                    </div>
+                </div>
+
+                <!--Gender, Issue Place-->
+                <div class="form-group row">
+                    <label for="holder-gender" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="holder-gender" name="holder-gender">
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <label for="pd-issue-place" class="col-sm-2 col-form-label col-form-label-sm">Issue Place</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="pd-issue-place" id="pd-issue-place" />
+                    </div>
+                </div>
+
+                <!--Post Code, Contact No-->
+                <div class="form-group row">
+                    <label for="holder-pt-code" class="col-sm-2 col-form-label col-form-label-sm">Post Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="holder-pt-code" id="holder-pt-code" />
+                    </div>
+                    <label for="hold-ctNo" class="col-sm-2 col-form-label col-form-label-sm">Contact No</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="hold-ctNo" id="hold-ctNo" />
+                    </div>
+                </div>
+
+                <!--Address, Email Address-->
+                <div class="form-group row">
+                    <label for="holder-addr" class="col-sm-2 col-form-label col-form-label-sm">Address</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="holder-addr" id="holder-addr" />
+                    </div>
+                    <label for="hold-email" class="col-sm-2 col-form-label col-form-label-sm">Email Address</label>
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control" name="hold-email" id="hold-email" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2"></div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="holder-addr2" id="holder-addr2" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="holder-addr3" id="holder-addr3" />
+                    </div>
+                    <label for="hold-ex-clientCode" class="col-sm-2 col-form-label col-form-label-sm">External Client Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="hold-ex-clientCode" id="hold-ex-clientCode" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

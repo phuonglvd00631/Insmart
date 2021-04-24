@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    th, td {
+        white-space: nowrap;
+        text-align: center
+    }
+</style>
+
+<div class="col-lg-12">
+    <div class="card">
+        <form>
+            <div class="col-sm-12 mt-3">
+                <div class="form-group row">
+                    <label for="txtPolNo" class="col-sm-1 col-form-label col-form-label-sm">Policy No</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtPolNo" name="txtPolNo">
+                    </div>
+                    <label for="txtCardNo" class="col-sm-1 col-form-label col-form-label-sm">Card No</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtCardNo" name="txtCardNo">
+                    </div>
+                    <label for="txtInsuredName" class="col-sm-1 col-form-label col-form-label-sm">Insured's Name</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtInsuredName" name="txtInsuredName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="txtIdNum" class="col-sm-1 col-form-label col-form-label-sm">ID Number</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtIdNum" name="txtIdNum">
+                    </div>
+                    <label for="dateDBO" class="col-sm-1 col-form-label col-form-label-sm">DBO</label>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control" id="dateDBO" name="dateDBO">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row m-3 text-center">
+                <div class="col-lg-12 col-sm-12 col-md-12 text-center">
+                    <button type="button" class="btn btn-primary btn-group-sm m-4 m-lg-4 m-sm-4" id="btnSearch">Search</button>
+                    <button type="button" class="btn btn-primary btn-group-sm m-4 m-lg-4 m-sm-4" id="btnClear">Clear</button>
+                    <button type="button" class="btn btn-primary btn-group-sm m-4 m-lg-4 m-sm-4" id="btnCancel">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row card-body">
+            <div class="table-responsive table-responsive-md table-responsive-sm recentOrderTable">
+                <table class="table table-bordered table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th class=" pr-3">
+                                <div class="custom-control custom-checkbox mx-2">
+                                    <input type="checkbox" class="custom-control-input" id="checkAll">
+                                    <label class="custom-control-label" for="checkAll"></label>
+                                </div>
+                            </th>
+                            <th scope="col">No</th>
+                            <th scope="col">CardNo</th>
+                            <th scope="col">Member Status</th>
+                            <th scope="col">PolicyNo</th>
+                            <th scope="col">PO'Name</th>
+                            <th scope="col">Insured'Name</th>
+                            <th scope="col">Insured Id Number</th>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Remark Benefit</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="listMember">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary btn-group-sm m-4 m-lg-4 m-sm-4">Create Case</button>
+        </div>
+        <div class="col-12">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end" id="pagination">
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!--slowdown-->
+<div class="modal fade" id="slowdown" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/InternetSlowdown_Day.gif/220px-InternetSlowdown_Day.gif" class="rounded-circle" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section MyScript{
+    <script>
+        var indexPage = 0;
+        var currentPage = 1;
+
+        function search(currentPage) {
+            $('#slowdown').modal();
+            $('#listMember').empty();
+            $('#paginationData').empty();
+
+            var bod = $('input[name="dateDBO"]').val();
+
+            if (bod != "") {
+                var date = new Date(bod);
+                var month = date.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                bod = date.getDate() + "/" + month + "/" + date.getFullYear();
+            }
+            var policyNo = $('input[name="txtPolNo"]').val();
+            var cardNo = $('input[name="txtCardNo"]').val();
+            var insuredName = $('input[name="txtInsuredName"]').val();
+            var idNum = $('input[name="txtIdNum"]').val();
+
+            $.ajax({
+                url: "/SearchMember/Search",
+                method: "POST",
+                dataType: "json",
+                data: { policyNo: policyNo, cardNo: cardNo, insuredName: insuredName, idNum: idNum, bod: bod, indexPage: indexPage },
+                success: function (data) {
+
+                    if (data.code == 200) {
+                        console.log(data)
+
+                        $('#slowdown').modal('toggle');
+
+                        var rsObj = JSON.parse(data.result)
+
+                        var listData = rsObj.Result.items;
+
+                        //render data
+                        $.each(listData, function (i, v) {
+                            var tr = '<tr id="' + 'row-' + v.card_no + '">';
+                            tr += '<td class="py-2"> <div class="custom-control custom-checkbox mx-2"> <input type="checkbox" class="custom-control-input" id="checkbox2"> <label class="custom-control-label" for="checkbox2"></label> </div> </td>';
+                            tr += '<td>' + (i + 1) + '</td>';
+                            tr += '<td>' + v.card_no + '</td>';
+                            tr += '<td>' + v.member_status + '</td>';
+                            tr += '<td>' + v.pol_num + '</td>';
+                            tr += '<td>' + v.po_name + '</td>';
+                            tr += '<td>' + v.ins_name + '</td>';
+                            tr += '<td>' + v.ins_id_num + '</td>';
+                            tr += '<td>' + v.ins_dob + '</td>';
+                            tr += '<td>' + v.remark_benefit + '</td>';
+                            tr += '<td> <div class="dropdown custom-dropdown mb-0"> <div data-toggle="dropdown"> <i class="fa fa-ellipsis-v"></i> </div> <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="javascript:void(0);">Details</a> <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a> </div> </div> </td>';
+                            tr += "</tr>";
+                            $('#listMember').append(tr);
+                        });
+
+
+                        var pageSize = 10;
+                        var pageRange = 5;
+                        var totalRecord = parseInt(rsObj.Result.total_records);
+                        var totalPage = Math.ceil(totalRecord / pageSize);
+
+
+
+                    } else {
+                        $('#slowdown').modal('toggle');
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        }
+        $(document).ready(function () {
+            $('#btnSearch').click(function () {
+                search(currentPage);
+            });
+
+            //// handle pagination
+            //$(document).on('click', 'li.item ', function () {
+            //    if ($(this).is($('ul#paginationData li.active'))) {
+            //        return;
+            //    }
+
+            //    CurrentPage = parseInt($(this).text());
+            //    pageStart = CurrentPage;
+            //    search(CurrentPage);
+
+            //});
+
+            ////pagination last
+            //$(document).on('click', 'li.last ', function () {
+            //    if ($(this).is($('ul#paginationData li.active'))) {
+            //        return;
+            //    }
+            //    CurrentPage = totalPage;
+            //    pageStart = totalPage;
+            //    search(CurrentPage);
+
+            //});
+
+            ////pagination first
+            //$(document).on('click', 'li.first ', function () {
+            //    if ($(this).is($('ul#paginationData li.active'))) {
+            //        return;
+            //    }
+            //    CurrentPage = 1;
+            //    pageStart = 1;
+            //    search(CurrentPage);
+            //});
+
+            ////pagination prev
+            //$(document).on('click', 'li.prev ', function () {
+            //    if ($(this).is($('ul#paginationData li.active'))) {
+            //        return;
+            //    }
+
+            //    CurrentPage = CurrentPage - 1;
+            //    pageStart = CurrentPage;
+            //    search(CurrentPage);
+            //});
+
+            ////pagination next
+            //$(document).on('click', 'li.next ', function () {
+            //    if ($(this).is($('ul#paginationData li.active'))) {
+            //        return;
+            //    }
+
+            //    CurrentPage = CurrentPage + 1;
+            //    alert(CurrentPage)
+            //    pageStart = CurrentPage;
+            //    search(CurrentPage);
+            //});
+
+        });
+
+    </script>
+}
